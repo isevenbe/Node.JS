@@ -1,12 +1,1 @@
-{
-    "name": "db",
-    "version": "1.0.0",
-    "description": "",
-    "main": "./node_first_app/index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Florentin",
-    "license": "ISC"
-  }
-  
+[{"studentName":"Florentin","pastWatch":["TestWatch","TestWatch","TestWatch","TestWatch","TestWatch","TestWatch"],"nextWatch":"TestWatch","pastWatchSubject":["TextNext22","TextNext232","TextNext232","TextNext2311112","TextNext2112","TextNext1112112"],"watchSubject":"TextNext1112112"}]

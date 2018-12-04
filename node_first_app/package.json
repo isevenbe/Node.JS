@@ -1,7 +1,6 @@
 {
   "name": "node_first_app",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +8,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
-  }
+    "autoloader": "^2.1.0",
+    "body-parser": "file:node_modules/body-parser",
+    "express": "^4.16.4",
+    "jsonfile": "^5.0.0"
+  },
+  "devDependencies": {},
+  "description": ""
 }
