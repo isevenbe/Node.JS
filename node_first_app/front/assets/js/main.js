@@ -1,40 +1,86 @@
 
+
+// Function for posting into DB by the name of the student 
 const createNewStudent = () => {
-    let get1 = document.querySelector(".studentName");
-    // let get2 = document.querySelector(".watchSubject").value;
-    // let get3 = document.querySelector(".nextWatchDate").value;
-    get1.toString();
-    // get2.toString();
-    // get3.toString();
+    let postStudent = document.querySelector(".studentName");
+    postStudent.toString();
     fetch("http://localhost:2525/students/new",
         {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            // mode: "cors",
             method: "POST",
-            body: JSON.stringify({ studentName: get1.value })
+            body: JSON.stringify({ studentName: postStudent.value })
         })
-        // .then((res) => res.json())
-        .then(function (res) { console.log(res) })
-        .catch(function (res) { console.log(res) })
 }
 
+// Get all student from the DB
 const selectStudent = () => {
-    const listOfStudents = document.querySelector(".listOfStudents")
     fetch("http://localhost:2525/students")
         .then((resp) => resp.json())
-        .then(function (data) {
-            for (let index = 0; index < data.length; index++) {
-                console.log('data[index] :', data[index].studentName);
-                let createOption = document.createElement("option");
-                createOption.innerHTML = data[index].studentName
-                createOption.value = data[index].studentName;
-                listOfStudents.append(createOption);
-            }
+        .then(data => createListOfStudents(data))
+    // .then(manageWatch())
+
+}
+
+// Create an option for eatch student get in "selectStudent()"
+const createListOfStudents = (data) => {
+    const listOfStudents = document.querySelector(".listOfStudents")
+    for (let index = 0; index < data.length; index++) {
+        let createOption = document.createElement("option");
+        createOption.classList.add("student");
+        createOption.innerHTML = data[index].studentName
+        createOption.id = data[index].id;
+        listOfStudents.append(createOption);
+    }
+}
+
+// Add watch to a specific student
+const manageWatch = () => {
+    const studentSelected = document.querySelector(".listOfStudents").selectedIndex;
+const studentList = document.querySelector(".listOfStudents").options;
+
+    fetch(`http://localhost:2525/studentManage?id=${studentList[studentSelected].id}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+            document.querySelector(".insertWatch").innerHTML = `
+            <br>
+            Student Selected : ${data.studentName}
+            <br>
+            <br>
+            <label for="watchDate">Date of the watch</label>
+            <br>
+            <input type="date" name="watchDate" class="watchDate" id="">
+            <br>
+                    <label for="watchSubject">
+                        Subject of the Watch
+                    </label>
+                    <br>
+            <input type="text" name="watchSubject" class="watchSubject" id="">
+            <br>
+            <button class= "addWatch">Add the watch</button>`;
+
+            document.querySelector(".addWatch").addEventListener("click", addWatch);
         })
 }
-document.querySelector(".send").addEventListener("click", createNewStudent);
 
-selectStudent()
+const addWatch = () => {
+    const studentSelected = document.querySelector(".listOfStudents").selectedIndex;
+    const studentList = document.querySelector(".listOfStudents").options;
+    const selectDate = document.querySelector(".watchDate"); 
+    const selectSubject = document.querySelector(".watchSubject"); 
+    fetch(`http://localhost:2525/student?id=${studentList[studentSelected].id}`, {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: "PUT",
+        body: JSON.stringify({ nextWatch: selectDate.value, watchSubject: selectSubject.value })
+    })
+}
+
+
+document.querySelector(".send").addEventListener("click", createNewStudent);
+document.querySelector(".manage").addEventListener("click", manageWatch);
+selectStudent();
