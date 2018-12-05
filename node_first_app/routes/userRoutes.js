@@ -1,20 +1,8 @@
 var jsonfile = require('jsonfile')
-
-var file = './tmp/data.json';
 const file_path = "./DB/users.json";
 
-var obj = { name: 'JP' }
-
-jsonfile.writeFile(file, obj, function (err) {
-    console.error(err)
-})
-jsonfile.readFile(file, function (err, obj) {
-    console.dir(obj)
-
-})
-
 module.exports = function (app) {
-    
+
     app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
