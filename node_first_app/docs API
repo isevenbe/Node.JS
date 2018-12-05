@@ -1,0 +1,7 @@
+http://10.20.0.214:2525
+/students (Get all API);
+/students/new (Create new Object)
+/student?{{id}} (Get 1 student)
+/students/destroy?{{id}} (Delete 1 user from API);
+
+
