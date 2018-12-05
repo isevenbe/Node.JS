@@ -8,18 +8,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
 </head>
+
 <body>
-    <form method="POST">
+    <div>
+        <h3>Add a student</h3>
         <label for="name">Student Name</label>
         <input type="text" name="name" id="" class="studentName">
-        <label for="watchSubject">Watch Subject</label>
+        <!-- <label for="watchSubject">Watch Subject</label>
         <input type="text" name="watchSubject" id="" class="watchSubject">
         <label for="nextWatchDate">Next watch Date</label>
-        <input type="date" name="nextWatchDate" id="" class="nextWatchDate">
+        <input type="date" name="nextWatchDate" id="" class="nextWatchDate"> -->
         <input type="submit" value="Send" class="send">
-    </form>
+    </div>
+    <br>
+    <div>
+        <h3>Assign a watch to Student</h3>
+        <h5>Select a student : </h5>
+        <select name="listOfStudents" id="" class="listOfStudents">
+
+        </select>
+        <button class="manage">Manage Watch</button>
+
+    </div>
     <script src="./assets/js/main.js"></script>
-    
+
 </body>
 
 </html>

@@ -2,6 +2,12 @@ var jsonfile = require('jsonfile')
 const file_path = "./DB/users.json";
 
 module.exports = function (app) {
+    
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+      });
 
     app.get("/students", (req, res) => {
         console.log("fetching all users");
@@ -18,8 +24,13 @@ module.exports = function (app) {
         let { studentName, pastWatch, nextWatch, pastWatchSubject, watchSubject } = req.body;
 
         jsonfile.readFile(file_path, function (err, content) {
+            pastWatch = new Array();
+            nextWatch = "";
+            pastWatchSubject = new Array();
+            watchSubject = "";
 
             content.push({ studentName, pastWatch, nextWatch, pastWatchSubject, watchSubject });
+
 
             console.log("added " + studentName + " to DB");
 
@@ -36,12 +47,12 @@ module.exports = function (app) {
         let studentName = req.query.studentName;
         let nextWatch = req.body.nextWatch;
         let watchSubject = req.body.watchSubject;
-
+        
         jsonfile.readFile(file_path, function (err, content) {
                 for (var i = content.length - 1; i >= 0; i--) {
                     if (content[i].studentName === studentName) {
                         console.log("updated user " + studentName + " has now username : ");
-
+                        
                         user = content[i];
                         user.nextWatch = nextWatch;
                         user.pastWatch.push(nextWatch);
