@@ -39,7 +39,7 @@ const createListOfStudents = (data) => {
 // Add watch to a specific student
 const manageWatch = () => {
     const studentSelected = document.querySelector(".listOfStudents").selectedIndex;
-const studentList = document.querySelector(".listOfStudents").options;
+    const studentList = document.querySelector(".listOfStudents").options;
 
     fetch(`http://localhost:2525/studentManage?id=${studentList[studentSelected].id}`)
         .then((resp) => resp.json())
@@ -65,6 +65,7 @@ const studentList = document.querySelector(".listOfStudents").options;
         })
 }
 
+// Add a new watch to the API
 const addWatch = () => {
     const studentSelected = document.querySelector(".listOfStudents").selectedIndex;
     const studentList = document.querySelector(".listOfStudents").options;
