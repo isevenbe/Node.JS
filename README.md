@@ -20,7 +20,7 @@ In order to train on the basis of Coach Anthony's course I created an API to man
 
 1. POST : serverhost/watch?studentName={{YourStudentName}}
 2. GET : serverhost/watch
-⋅⋅1. GET PARAM : ?id={{YourID}}
+- GET PARAM : ?id={{YourID}}
 3. PUT : serverhost/watch?id={{YourID}}
 4. DELETE : serverhost/watch?id={{YourID}}
 
