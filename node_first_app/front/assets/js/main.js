@@ -4,7 +4,7 @@
 const createNewStudent = () => {
     let postStudent = document.querySelector(".studentName");
     postStudent.toString();
-    fetch("http://localhost:2525/students/new",
+    fetch("http://localhost:2525/watch",
         {
             headers: {
                 'Accept': 'application/json',
@@ -17,7 +17,7 @@ const createNewStudent = () => {
 
 // Get all student from the DB
 const selectStudent = () => {
-    fetch("http://localhost:2525/students")
+    fetch("http://localhost:2525/watch")
         .then((resp) => resp.json())
         .then(data => createListOfStudents(data))
     // .then(manageWatch())
@@ -41,7 +41,7 @@ const manageWatch = () => {
     const studentSelected = document.querySelector(".listOfStudents").selectedIndex;
     const studentList = document.querySelector(".listOfStudents").options;
 
-    fetch(`http://localhost:2525/studentManage?id=${studentList[studentSelected].id}`)
+    fetch(`http://localhost:2525/watch?id=${studentList[studentSelected].id}`)
         .then((resp) => resp.json())
         .then((data) => {
             document.querySelector(".insertWatch").innerHTML = `
@@ -71,7 +71,7 @@ const addWatch = () => {
     const studentList = document.querySelector(".listOfStudents").options;
     const selectDate = document.querySelector(".watchDate"); 
     const selectSubject = document.querySelector(".watchSubject"); 
-    fetch(`http://localhost:2525/student?id=${studentList[studentSelected].id}`, {
+    fetch(`http://localhost:2525/watch?id=${studentList[studentSelected].id}`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
