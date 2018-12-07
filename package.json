@@ -16,7 +16,9 @@
     "restify-cors-middleware": "^1.1.1",
     "uuid": "^3.3.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "body-parser": "file:node_modules/body-parser"
+  },
   "description": "",
   "engines": {
     "node": "10.x",
