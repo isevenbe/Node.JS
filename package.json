@@ -17,5 +17,8 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "",
+  "engines" : { 
+    "node" : ">=0.12" 
+  } 
 }
