@@ -9,19 +9,25 @@
   "license": "ISC",
   "dependencies": {
     "autoloader": "^2.1.0",
-    "body-parser": "file:node_modules/body-parser",
+    "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "jsonfile": "^5.0.0",
     "restify-cors-middleware": "^1.1.1",
     "uuid": "^3.3.2"
   },
-  "devDependencies": {
-    "body-parser": "file:node_modules/body-parser"
-  },
-  "description": "",
+  "devDependencies": {},
+  "description": "/students (Get all API);\r  /students/new (Create new Object)\r  /studentManage?id={{id}} (Get 1 student)\r  /students/destroy?{{id}} (Delete 1 user from API);",
   "engines": {
     "node": "10.x",
     "npm": "6.x"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isevenbe/Node.JS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/isevenbe/Node.JS/issues"
+  },
+  "homepage": "https://github.com/isevenbe/Node.JS#readme"
 }
