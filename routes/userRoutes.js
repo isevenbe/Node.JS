@@ -85,7 +85,7 @@ module.exports = function (app) {
 
     app.delete("/watch", (req, res) => {
 
-        let id = req.body.id;
+        let id = req.query.id;
 
         jsonfile.readFile(file_path, function (err, content) {
 
