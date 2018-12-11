@@ -24,9 +24,9 @@ In order to train on the basis of Coach Anthony's course I created an API to man
 3. PUT : serverhost/watch?id={{YourID}}
 3. PUT PARAM : 
 {
-studentName : Your Param
-nextWatch : Your Param
-watchSubject : Your Param
+"studentName" : "Your Param"
+"nextWatch" : "Your Param"
+"watchSubject" : "Your Param"
 }
 4. DELETE : serverhost/watch?id={{YourID}}
 
