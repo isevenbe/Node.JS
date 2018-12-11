@@ -22,6 +22,12 @@ In order to train on the basis of Coach Anthony's course I created an API to man
 2. GET : serverhost/watch
 2. GET PARAM : ?id={{YourID}}
 3. PUT : serverhost/watch?id={{YourID}}
+3. PUT PARAM : 
+{
+studentName : Your Param
+nextWatch : Your Param
+watchSubject : Your Param
+}
 4. DELETE : serverhost/watch?id={{YourID}}
 
 ###### Next step is to push it to Heroku to bring in on a live server (In Progress)
