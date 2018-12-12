@@ -18,14 +18,18 @@ In order to train on the basis of Coach Anthony's course I created an API to man
 
 #### Link of the API :
 
-1. POST : serverhost/watch?studentName={{YourStudentName}}
+1. POST : serverhost/watch
+1. POST BODY :
+{
+"studentName" : "Your Param"
+}
 2. GET : serverhost/watch
 2. GET PARAM : ?id={{YourID}}
 3. PUT : serverhost/watch?id={{YourID}}
-3. PUT PARAM : 
+3. PUT BODY : 
 {
-"studentName" : "Your Param"
-"nextWatch" : "Your Param"
+"studentName" : "Your Param",
+"nextWatch" : "Your Param",
 "watchSubject" : "Your Param"
 }
 4. DELETE : serverhost/watch?id={{YourID}}
