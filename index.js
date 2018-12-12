@@ -4,6 +4,8 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 require("./routes/userRoutes")(app);
 
 const port = 2525;

@@ -42,44 +42,54 @@ module.exports = function (app) {
             nextWatch = "";
             watchSubject = "";
             id = uuidv4();
-
-            content.push({ id, studentName, pastWatch, nextWatch, pastWatchSubject, watchSubject });
-
-            console.log("added " + studentName + " to DB");
+            if (studentName != undefined) {
+                content.push({ id, studentName, pastWatch, nextWatch, pastWatchSubject, watchSubject });
+                console.log(`${studentName} as added to DataBase`);
+            } else {
+                // res.send({ERROR : `ERROR ! Make sure studentName into body`});
+            }
 
             jsonfile.writeFile(file_path, content, function (err) {
                 console.log(err);
             });
-
-            res.sendStatus(200);
+            res.send({ADDED : `${studentName} as added to DataBase`});
         });
     });
 
     app.put("/watch", (req, res) => {
         let user;
         let id = req.query.id;
-        let studentName = req.query.studentName;
+        let studentName = req.body.studentName;
         let nextWatch = req.body.nextWatch;
         let watchSubject = req.body.watchSubject;
 
         jsonfile.readFile(file_path, function (err, content) {
             for (var i = content.length - 1; i >= 0; i--) {
                 if (content[i].id === id) {
-                    console.log("updated user " + studentName + " has now username : ");
-
                     user = content[i];
-                    user.nextWatch = nextWatch;
-                    user.pastWatch.push(nextWatch);
-                    user.watchSubject = watchSubject;
-                    user.pastWatchSubject.push(watchSubject);
+                    if (user.nextWatch != null && user.watchSubject != null && user.studentName != null){
+                        user.studentName = studentName;
+                        user.nextWatch = nextWatch;
+                        user.pastWatch.push(nextWatch);
+                        user.watchSubject = watchSubject;
+                        user.pastWatchSubject.push(watchSubject);
+                        res.send(user);
+                        console.log(`${user.studentName} Added to DataBase`);
+                    } else {
+                        res.send({ERROR: `FILL ALL THE BODY REQUIRE IS : studentName, nextWatch, pastWatch`});
+                        
+                    }
+                    
                 }
+                // res.send(user);
             }
 
             jsonfile.writeFile(file_path, content, function (err) {
-                console.log(err);
+                console.log(`look like some put is ${err} on ${id}`);
             });
+        // res.send(user);
+
         });
-        res.send(user);
     });
 
 
@@ -92,8 +102,9 @@ module.exports = function (app) {
             for (var i = content.length - 1; i >= 0; i--) {
 
                 if (content[i].id == id) {
-                    console.log("removing " + content[i].id + "from DB");
                     content.splice(i, 1);
+                    res.send(`${id} as been removed from DataBase`);
+                    console.log(`${id} as been removed from DataBase`);
                 }
 
             }
@@ -101,8 +112,6 @@ module.exports = function (app) {
             jsonfile.writeFile(file_path, content, function (err) {
                 console.log(err);
             });
-
-            res.sendStatus(200);
         });
     });
 
